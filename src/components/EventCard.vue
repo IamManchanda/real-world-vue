@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import uuid from "uuid";
-
 const eventShow = eventId => ({
   name: "event-show",
   params: {
@@ -19,25 +17,15 @@ const eventShow = eventId => ({
 });
 
 export default {
+  props: {
+    event: {
+      type: Object,
+      default: null,
+    },
+  },
   data() {
     return {
       eventShow,
-      event: {
-        id: uuid.v4(),
-        title: "Beach Cleanup",
-        date: "Sat Sep 14 2019",
-        time: "",
-        attendees: [
-          {
-            id: uuid.v4(),
-            name: "MS Dhoni",
-          },
-          {
-            id: uuid.v4(),
-            name: "Virat Kohli",
-          },
-        ],
-      },
     };
   },
 };
