@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
       <router-link :to="eventList">Event List</router-link>&nbsp; |
-      <router-link :to="eventShow">Show Event #1</router-link>&nbsp; |
       <router-link :to="eventCreate">Create Event</router-link>
     </div>
     <router-view />
@@ -11,14 +10,12 @@
 
 <script>
 const eventList = { name: "event-list" };
-const eventShow = { name: "event-show" };
 const eventCreate = { name: "event-create" };
 
 export default {
   data() {
     return {
       eventList,
-      eventShow,
       eventCreate,
     };
   },
