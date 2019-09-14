@@ -1,8 +1,13 @@
 <template>
-  <div class="icon-wrapper">
-    <svg class="icon" :width="width" :height="height">
-      <use v-bind="svgIcon(name)" />
-    </svg>
+  <div>
+    <div class="icon-wrapper">
+      <svg class="icon" :width="width" :height="height">
+        <use v-bind="svgIcon(name)" />
+      </svg>
+    </div>
+    <span>
+      <slot />
+    </span>
   </div>
 </template>
 
