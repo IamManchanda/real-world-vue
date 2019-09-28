@@ -2,12 +2,23 @@
   <div>
     <h1>Event Listing</h1>
     <event-card v-for="event in events" :key="event.id" :event="event" />
+    <router-link
+      v-if="page !== 1"
+      :to="paginationLinkByType('prev')"
+      rel="prev"
+    >
+      <span>Prev</span>
+    </router-link>
+    <span v-if="page !== 1">|</span>
+    <router-link :to="paginationLinkByType('next')" rel="next">
+      <span>Next</span>
+    </router-link>
   </div>
 </template>
 
 <script>
 import EventCard from "@/components/EventCard.vue";
-import { getEvents } from "@/services/EventService.js";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -15,18 +26,37 @@ export default {
   },
   data() {
     return {
-      events: [],
+      perPage: 3,
     };
   },
+  computed: {
+    page() {
+      return parseInt(this.$route.query.page) || 1;
+    },
+    ...mapState(["events"]),
+  },
   created() {
-    (async () => {
-      try {
-        const { data: events } = await getEvents();
-        this.events = events;
-      } catch (error) {
-        console.error(error);
+    const { perPage, page } = this;
+    this.$store.dispatch("fetchEvents", {
+      perPage,
+      page,
+    });
+  },
+  methods: {
+    paginationLinkByType(type) {
+      let page = 1;
+      if (type === "prev") {
+        page = this.page - 1;
+      } else if (type === "next") {
+        page = this.page + 1;
       }
-    })();
+      return {
+        name: "event-list",
+        query: {
+          page,
+        },
+      };
+    },
   },
 };
 </script>

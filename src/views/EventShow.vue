@@ -3,7 +3,7 @@
     <div class="event-header">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
-      <h5>Organized by {{ event.organizer }}</h5>
+      <h5>Organized by {{ event.organizer ? event.organizer.name : "" }}</h5>
       <h5>Category: {{ event.category }}</h5>
     </div>
     <BaseIcon name="map">
@@ -14,16 +14,14 @@
     <p>{{ event.description }}</p>
     <h2>
       Attendees
-      <span class="badge -fill-gradient">{{
+      <span class="badge -fill-gradient">
+        {{
         event.attendees ? event.attendees.length : 0
-      }}</span>
+        }}
+      </span>
     </h2>
     <ul class="list-group">
-      <li
-        v-for="(attendee, index) in event.attendees"
-        :key="index"
-        class="list-item"
-      >
+      <li v-for="(attendee, index) in event.attendees" :key="index" class="list-item">
         <b>{{ attendee.name }}</b>
       </li>
     </ul>
@@ -31,7 +29,7 @@
 </template>
 
 <script>
-import { getCurrentEvent } from "@/services/EventService.js";
+import { mapState } from "vuex";
 
 export default {
   props: {
@@ -40,20 +38,14 @@ export default {
       default: 0,
     },
   },
-  data() {
-    return {
-      event: {},
-    };
+  computed: {
+    ...mapState(["event"]),
   },
   created() {
-    (async () => {
-      try {
-        const { data: event } = await getCurrentEvent(this.eventId);
-        this.event = event;
-      } catch (error) {
-        console.error(error);
-      }
-    })();
+    const { eventId } = this;
+    this.$store.dispatch("fetchCurrentEvent", {
+      eventId,
+    });
   },
 };
 </script>

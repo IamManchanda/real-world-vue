@@ -1,5 +1,6 @@
 {
-  "events": [{
+  "events": [
+    {
       "id": 1,
       "title": "Beach Cleanup",
       "date": "Aug 28 2018",
@@ -8,7 +9,8 @@
       "description": "Let's clean up this beach.",
       "organizer": "Adam Jahr",
       "category": "sustainability",
-      "attendees": [{
+      "attendees": [
+        {
           "id": "abc123",
           "name": "Adam Jahr"
         },
@@ -35,7 +37,8 @@
       "description": "We're going to clean up this park.",
       "organizer": "Adam Jahr",
       "category": "nature",
-      "attendees": [{
+      "attendees": [
+        {
           "id": "ghi789",
           "name": "Beth Swanson"
         },
@@ -54,7 +57,8 @@
       "description": "Help animals find new homes.",
       "organizer": "Gregg Pollack",
       "category": "animal welfare",
-      "attendees": [{
+      "attendees": [
+        {
           "id": "abc123",
           "name": "Adam Jahr"
         },
@@ -67,6 +71,71 @@
           "name": "Mary Gordon"
         }
       ]
+    },
+    {
+      "id": "ea9217fc-9c37-4269-a02a-09d5ffc75d0a",
+      "category": "sustainability",
+      "title": "Lorem Ipsum",
+      "description": "Lorem Ipsum Dolor",
+      "location": "India",
+      "date": "2019-09-11T17:48:00.000Z",
+      "time": "1:00",
+      "attendees": []
+    },
+    {
+      "id": "b7cc07d7-1bc7-4ecd-9752-1e40d23c26c6",
+      "category": "nature",
+      "title": "Plant Trees",
+      "description": "Plant Trees in the Forest",
+      "location": "Kaveri Calling",
+      "date": "2019-09-18T17:56:00.000Z",
+      "time": "8:00",
+      "attendees": []
+    },
+    {
+      "id": "e7105b2d-e94e-4fd5-96af-d231655de4d4",
+      "category": "nature",
+      "title": "Plant Trees Again",
+      "description": "Plant Trees again and again",
+      "location": "Kaveri Calling",
+      "date": "2019-09-03T18:00:00.000Z",
+      "time": "2:00",
+      "attendees": []
+    },
+    {
+      "id": "47fa36c8-7dc8-4c69-aef0-bcc753f40a6c",
+      "category": "nature",
+      "title": "12",
+      "description": "1233",
+      "location": "s12344",
+      "date": "2019-09-02T18:01:00.000Z",
+      "time": "3:00",
+      "attendees": []
+    },
+    {
+      "id": "f26afc2d-95f2-4029-8cd9-2718667907de",
+      "category": "nature",
+      "organizer": "",
+      "title": "122",
+      "description": "12222",
+      "location": "12",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": "f601e4c1-5f8f-41b6-8e8d-c00a60a89e0b",
+      "category": "sustainability",
+      "organizer": {
+        "id": "cb2f088a-7f3e-4c1b-b1cf-9159374ab817",
+        "name": "Harry Manchanda"
+      },
+      "title": "122",
+      "description": "122222",
+      "location": "122",
+      "date": "2019-09-04T18:04:00.000Z",
+      "time": "2:00",
+      "attendees": []
     }
   ]
 }

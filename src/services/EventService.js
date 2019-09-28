@@ -9,5 +9,7 @@ const apiClient = axios.create({
   },
 });
 
-export const getEvents = () => apiClient.get("/events");
+export const getEvents = (perPage, page) =>
+  apiClient.get(`/events?_limit=${perPage}&_page=${page}`);
 export const getCurrentEvent = eventId => apiClient.get(`/events/${eventId}`);
+export const postCurrentEvent = event => apiClient.post("/events", event);
