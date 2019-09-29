@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import uuid from "uuid";
+import * as user from "./modules/user";
 import {
   getEvents,
   getCurrentEvent,
@@ -10,11 +10,11 @@ import {
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    /* episode 6, 4:00 */
+    user,
+  },
   state: {
-    user: {
-      id: uuid.v4(),
-      name: "Harry Manchanda",
-    },
     categories: [
       "sustainability",
       "nature",

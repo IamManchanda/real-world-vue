@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Event Listing</h1>
+    <h3>Event Listing for {{ user.user.name }}</h3>
     <event-card v-for="event in events" :key="event.id" :event="event" />
     <router-link
       v-if="page !== 1"
@@ -33,7 +33,7 @@ export default {
     page() {
       return parseInt(this.$route.query.page) || 1;
     },
-    ...mapState(["events"]),
+    ...mapState(["events", "user"]),
   },
   created() {
     const { perPage, page } = this;

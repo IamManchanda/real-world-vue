@@ -87,11 +87,12 @@ export default {
       }
     },
     createFreshEvent() {
-      const user = this.$store.state.user;
+      const user = this.$store.state.user.user;
       return {
         id: uuid.v4(),
+        user: user.name,
         category: "",
-        organizer: user,
+        organizer: user.name,
         title: "",
         description: "",
         location: "",
