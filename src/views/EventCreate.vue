@@ -70,7 +70,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["user", "categories"]),
+    ...mapState({
+      user: state => state.userModule.user,
+      categories: state => state.categories,
+    }),
   },
   methods: {
     async createEvent() {
@@ -87,7 +90,7 @@ export default {
       }
     },
     createFreshEvent() {
-      const user = this.$store.state.user.user;
+      const user = this.$store.state.userModule.user;
       return {
         id: uuid.v4(),
         user: user.name,

@@ -41,7 +41,9 @@ export default {
     },
   },
   computed: {
-    ...mapState(["event"]),
+    ...mapState({
+      event: state => state.eventModule.event,
+    }),
   },
   created() {
     const { eventId } = this;
