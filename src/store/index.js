@@ -21,7 +21,4 @@ export default new Vuex.Store({
       "community",
     ],
   },
-  getters: {
-    catLength: state => state.categories.length,
-  },
 });
