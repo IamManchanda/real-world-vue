@@ -40,16 +40,16 @@ export const actions = {
     }
   },
   async fetchCurrentEvent({ commit, getters }, { eventId }) {
-    try {
-      const event = getters.getEventById(eventId);
-      if (event) {
-        commit("SET_CURRENT_EVENT", { event });
-      } else {
+    const event = getters.getEventById(eventId);
+    if (event) {
+      commit("SET_CURRENT_EVENT", { event });
+    } else {
+      try {
         const { data: eventFromApi } = await getCurrentEvent(eventId);
         commit("SET_CURRENT_EVENT", { event: eventFromApi });
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
   },
 };
