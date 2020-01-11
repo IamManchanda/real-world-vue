@@ -172,6 +172,18 @@
       "date": "2020-01-09T11:49:00.000Z",
       "time": "1:00",
       "attendees": []
+    },
+    {
+      "id": "eb9a5b47-b2e8-4e0b-833a-1cf30c71ecc9",
+      "user": "Harry Manchanda",
+      "category": "education",
+      "organizer": "Harry Manchanda",
+      "title": "Edu",
+      "description": "edu",
+      "location": "edu",
+      "date": "2020-01-10T12:04:00.000Z",
+      "time": "2:00",
+      "attendees": []
     }
   ]
 }

@@ -47,7 +47,7 @@ export default {
   },
   created() {
     const { eventId } = this;
-    this.$store.dispatch("fetchCurrentEvent", {
+    this.$store.dispatch("eventModule/fetchCurrentEvent", {
       eventId,
     });
   },

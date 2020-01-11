@@ -79,7 +79,7 @@ export default {
     async createEvent() {
       try {
         const { event } = this;
-        await this.$store.dispatch("createEvent", { event });
+        await this.$store.dispatch("eventModule/createEvent", { event });
         this.$router.push({
           name: "event-show",
           params: { eventId: this.event.id },
