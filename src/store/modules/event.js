@@ -24,24 +24,59 @@ export const mutations = {
 };
 
 export const actions = {
-  async createEvent({ commit }, { event }) {
+  async createEvent({ commit, dispatch }, { event }) {
     try {
       await postCurrentEvent(event);
       commit("ADD_CURRENT_EVENT", { event });
+      dispatch(
+        "notificationModule/addNotification",
+        {
+          notification: {
+            type: "success",
+            message: "Your event has been created",
+          },
+        },
+        {
+          root: true,
+        }
+      );
     } catch (error) {
-      console.error(error);
+      dispatch(
+        "notificationModule/addNotification",
+        {
+          notification: {
+            type: "error",
+            message: `There was a problem creating your event ${error.message}`,
+          },
+        },
+        {
+          root: true,
+        }
+      );
+      throw new Error(error);
     }
   },
-  async fetchEvents({ commit }, { perPage, page }) {
+  async fetchEvents({ commit, dispatch }, { perPage, page }) {
     try {
       const { data: events, headers } = await getEvents(perPage, page);
       console.log(`Total Events: ${headers["x-total-count"]}`);
       commit("SET_EVENTS", { events });
     } catch (error) {
-      console.error(error);
+      dispatch(
+        "notificationModule/addNotification",
+        {
+          notification: {
+            type: "error",
+            message: `There was a problem fetching events list : ${error.message}`,
+          },
+        },
+        {
+          root: true,
+        }
+      );
     }
   },
-  async fetchCurrentEvent({ commit, getters }, { eventId }) {
+  async fetchCurrentEvent({ commit, getters, dispatch }, { eventId }) {
     const event = getters.getEventById(eventId);
     if (event) {
       commit("SET_CURRENT_EVENT", { event });
@@ -50,7 +85,18 @@ export const actions = {
         const { data: eventFromApi } = await getCurrentEvent(eventId);
         commit("SET_CURRENT_EVENT", { event: eventFromApi });
       } catch (error) {
-        console.error(error);
+        dispatch(
+          "notificationModule/addNotification",
+          {
+            notification: {
+              type: "error",
+              message: `There was a problem fetching current event : ${error.message}`,
+            },
+          },
+          {
+            root: true,
+          }
+        );
       }
     }
   },
