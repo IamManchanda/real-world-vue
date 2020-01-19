@@ -1,4 +1,5 @@
 import axios from "axios";
+import NProgress from "nprogress";
 
 const api = axios.create({
   baseURL: "http://localhost:3000",
@@ -7,6 +8,16 @@ const api = axios.create({
     Accept: "application/json",
     "Content-Type": "application/json",
   },
+});
+
+api.interceptors.request.use(config => {
+  NProgress.start();
+  return config;
+});
+
+api.interceptors.response.use(response => {
+  NProgress.done();
+  return response;
 });
 
 export const getEvents = (perPage, page) =>
