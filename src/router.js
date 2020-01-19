@@ -3,6 +3,7 @@ import Router from "vue-router";
 import EventList from "@/views/EventList.vue";
 import EventShow from "@/views/EventShow.vue";
 import EventCreate from "@/views/EventCreate.vue";
+import NotFound from "@/views/NotFound.vue";
 import NProgress from "nprogress";
 import store from "@/store";
 
@@ -30,11 +31,36 @@ const router = new Router({
       props: true,
       async beforeEnter(routeTo, routeFrom, next) {
         const { eventId } = routeTo.params;
-        const event = await store.dispatch("eventModule/fetchCurrentEvent", {
-          eventId,
-        });
-        routeTo.params.event = event;
-        next();
+        try {
+          const event = await store.dispatch("eventModule/fetchCurrentEvent", {
+            eventId,
+          });
+          routeTo.params.event = event;
+          next();
+        } catch (error) {
+          console.log("error");
+          next({
+            name: "page-not-found-404",
+            params: {
+              resource: "Event",
+            },
+          });
+        }
+      },
+    },
+    {
+      path: "/page-not-found-404",
+      name: "page-not-found-404",
+      component: NotFound,
+      props: true,
+    },
+    {
+      path: "*",
+      redirect: {
+        name: "page-not-found-404",
+        params: {
+          resource: "Page",
+        },
       },
     },
   ],

@@ -82,30 +82,15 @@ export const actions = {
       );
     }
   },
-  async fetchCurrentEvent({ commit, getters, dispatch }, { eventId }) {
+  async fetchCurrentEvent({ commit, getters }, { eventId }) {
     const event = getters.getEventById(eventId);
     if (event) {
       commit("SET_CURRENT_EVENT", { event });
       return event;
     } else {
-      try {
-        const { data: eventFromApi } = await getCurrentEvent(eventId);
-        commit("SET_CURRENT_EVENT", { event: eventFromApi });
-        return eventFromApi;
-      } catch (error) {
-        dispatch(
-          "notificationModule/addNotification",
-          {
-            notification: {
-              type: "error",
-              message: `There was a problem fetching current event : ${error.message}`,
-            },
-          },
-          {
-            root: true,
-          }
-        );
-      }
+      const { data: eventFromApi } = await getCurrentEvent(eventId);
+      commit("SET_CURRENT_EVENT", { event: eventFromApi });
+      return eventFromApi;
     }
   },
 };
