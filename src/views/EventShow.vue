@@ -32,6 +32,7 @@
 
 <script>
 export default {
+  name: "EventShow",
   props: {
     event: {
       type: Object,

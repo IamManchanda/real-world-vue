@@ -8,31 +8,28 @@
         <option v-for="cat in categories" :key="cat">{{ cat }}</option>
       </select>
       <h3>Name & describe your event</h3>
-      <div class="field">
-        <label>Title</label>
-        <input
-          v-model="event.title"
-          type="text"
-          placeholder="Add an event title"
-        />
-      </div>
-      <div class="field">
-        <label>Description</label>
-        <input
-          v-model="event.description"
-          type="text"
-          placeholder="Add a description"
-        />
-      </div>
+      <BaseInput
+        v-model="event.title"
+        label="Title"
+        type="text"
+        class="field"
+        placeholder="Add an event title"
+      />
+      <BaseInput
+        v-model="event.description"
+        label="Description"
+        type="text"
+        class="field"
+        placeholder="Add a description"
+      />
       <h3>Where is your event?</h3>
-      <div class="field">
-        <label>Location</label>
-        <input
-          v-model="event.location"
-          type="text"
-          placeholder="Add a location"
-        />
-      </div>
+      <BaseInput
+        v-model="event.location"
+        label="Location"
+        type="text"
+        class="field"
+        placeholder="Add a location"
+      />
       <h3>When is your event?</h3>
       <div class="field">
         <label>Date</label>
@@ -57,6 +54,7 @@ import uuid from "uuid";
 import NProgress from "nprogress";
 
 export default {
+  name: "EventCreate",
   components: {
     Datepicker,
   },

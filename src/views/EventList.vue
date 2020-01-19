@@ -35,6 +35,7 @@ const getPageEvents = async (routeTo, next) => {
 };
 
 export default {
+  name: "EventList",
   components: {
     EventCard,
   },

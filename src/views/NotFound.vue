@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: "NotFound",
   props: {
     resource: {
       type: String,
@@ -26,5 +27,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: "NetworkIssue",
   computed: {
     backToHome() {
       return {
@@ -20,5 +21,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
