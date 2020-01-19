@@ -106,6 +106,9 @@ small {
 .-text-error {
   color: tomato;
 }
+.error {
+  border: 1px solid tomato;
+}
 .-text-gray {
   color: rgba(0, 0, 0, 0.5);
 }
@@ -244,5 +247,72 @@ select:focus::ms-value {
 }
 select::ms-expand {
   opacity: 0;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 40px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s linear;
+}
+.button:hover {
+  -webkit-transform: scale(1.02);
+  transform: scale(1.02);
+  box-shadow: 0 7px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button:active {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  box-shadow: none;
+}
+.button:focus {
+  outline: 0;
+}
+.button.-cursor-pointer {
+  cursor: pointer;
+}
+.button.-fill-gradient {
+  background: linear-gradient(to right, #16c0b0, #84cf6a);
+  color: #ffffff;
+}
+.button:disabled {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  box-shadow: none;
+  background: #eeeeee;
+}
+.button + .button {
+  margin-left: 1em;
+}
+.button.-fill-gray {
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+.button.-size-small {
+  height: 32px;
+}
+.button.-icon-right {
+  text-align: left;
+  padding: 0 20px;
+}
+.button.-icon-right > .icon {
+  margin-left: 10px;
+}
+.button.-icon-left {
+  text-align: right;
+  padding: 0 20px;
+}
+.button.-icon-left > .icon {
+  margin-right: 10px;
+}
+.button.-icon-center {
+  padding: 0 20px;
 }
 </style>

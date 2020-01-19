@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Example from "@/views/Example.vue";
 import EventList from "@/views/EventList.vue";
 import EventShow from "@/views/EventShow.vue";
 import EventCreate from "@/views/EventCreate.vue";
@@ -19,6 +20,11 @@ const router = new Router({
       name: "event-list",
       component: EventList,
       props: true,
+    },
+    {
+      path: "/example",
+      name: "example",
+      component: Example,
     },
     {
       path: "/event/create",
