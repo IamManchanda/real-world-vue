@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2 class="-text-error">Ooops, Error 404!</h2>
+    <h2 class="-text-error">Ooops, Network Issue!</h2>
     <h3>
-      The {{ resource }} you are looking for is not found. Error Code: 404!
-      Please click the back button to go back to the Home page of the App.
+      It looks like either you or us are facing a network issue. Your request
+      couldn't suceed. Please click the back button and try again.
     </h3>
     <router-link :to="backToHome">Back to Home Page</router-link>
   </div>
@@ -11,12 +11,6 @@
 
 <script>
 export default {
-  props: {
-    resource: {
-      type: String,
-      default: "Page",
-    },
-  },
   computed: {
     backToHome() {
       return {

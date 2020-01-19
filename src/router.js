@@ -4,6 +4,7 @@ import EventList from "@/views/EventList.vue";
 import EventShow from "@/views/EventShow.vue";
 import EventCreate from "@/views/EventCreate.vue";
 import NotFound from "@/views/NotFound.vue";
+import NetworkIssue from "@/views/NetworkIssue.vue";
 import NProgress from "nprogress";
 import store from "@/store";
 
@@ -38,13 +39,18 @@ const router = new Router({
           routeTo.params.event = event;
           next();
         } catch (error) {
-          console.log("error");
-          next({
-            name: "page-not-found-404",
-            params: {
-              resource: "Event",
-            },
-          });
+          if (error.response && error.response.status === 404) {
+            next({
+              name: "page-not-found-404",
+              params: {
+                resource: "Event",
+              },
+            });
+          } else {
+            next({
+              name: "network-issue",
+            });
+          }
         }
       },
     },
@@ -52,6 +58,12 @@ const router = new Router({
       path: "/page-not-found-404",
       name: "page-not-found-404",
       component: NotFound,
+      props: true,
+    },
+    {
+      path: "/network-issue",
+      name: "network-issue",
+      component: NetworkIssue,
       props: true,
     },
     {
