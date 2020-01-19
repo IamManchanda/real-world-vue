@@ -7,8 +7,9 @@
         v-for="option in options"
         :key="option"
         :selected="option === value"
-        >{{ option }}</option
       >
+        {{ option }}
+      </option>
     </select>
   </div>
 </template>

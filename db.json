@@ -220,6 +220,18 @@
       "date": "",
       "time": "2:00",
       "attendees": []
+    },
+    {
+      "id": "32478b8f-6e81-4db4-892c-9463b9010926",
+      "user": "Harry Manchanda",
+      "category": "",
+      "organizer": "Harry Manchanda",
+      "title": "",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
     }
   ]
 }
