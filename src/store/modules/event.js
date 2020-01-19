@@ -9,6 +9,8 @@ export const namespaced = true;
 export const state = {
   events: [],
   event: {},
+  eventsTotal: 0,
+  perPage: 3,
 };
 
 export const mutations = {
@@ -20,6 +22,9 @@ export const mutations = {
   },
   SET_EVENTS(currentState, { events }) {
     currentState.events = events;
+  },
+  SET_EVENTS_TOTAL(currentState, { eventsTotal }) {
+    currentState.eventsTotal = eventsTotal;
   },
 };
 
@@ -56,10 +61,11 @@ export const actions = {
       throw new Error(error);
     }
   },
-  async fetchEvents({ commit, dispatch }, { perPage, page }) {
+  async fetchEvents({ commit, dispatch, state }, { page }) {
     try {
-      const { data: events, headers } = await getEvents(perPage, page);
-      console.log(`Total Events: ${headers["x-total-count"]}`);
+      const { data: events, headers } = await getEvents(state.perPage, page);
+      const eventsTotal = parseInt(headers["x-total-count"]);
+      commit("SET_EVENTS_TOTAL", { eventsTotal });
       commit("SET_EVENTS", { events });
     } catch (error) {
       dispatch(

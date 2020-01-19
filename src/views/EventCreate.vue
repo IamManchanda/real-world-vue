@@ -54,6 +54,7 @@
 import { mapState } from "vuex";
 import Datepicker from "vuejs-datepicker";
 import uuid from "uuid";
+import NProgress from "nprogress";
 
 export default {
   components: {
@@ -78,6 +79,7 @@ export default {
   methods: {
     async createEvent() {
       try {
+        NProgress.start();
         const { event } = this;
         await this.$store.dispatch("eventModule/createEvent", { event });
         this.$router.push({
@@ -87,6 +89,7 @@ export default {
         this.event = this.createFreshEvent();
       } catch (error) {
         console.error(error);
+        NProgress.done();
       }
     },
     createFreshEvent() {

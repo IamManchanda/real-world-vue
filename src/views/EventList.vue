@@ -9,8 +9,12 @@
     >
       <span>Prev</span>
     </router-link>
-    <span v-if="page !== 1">|</span>
-    <router-link :to="paginationLinkByType('next')" rel="next">
+    <span v-if="page !== 1 && hasNextPage">|</span>
+    <router-link
+      v-if="hasNextPage"
+      :to="paginationLinkByType('next')"
+      rel="next"
+    >
       <span>Next</span>
     </router-link>
   </div>
@@ -18,32 +22,44 @@
 
 <script>
 import EventCard from "@/components/EventCard.vue";
+import store from "@/store";
 import { mapState } from "vuex";
+
+const getPageEvents = async (routeTo, next) => {
+  const page = parseInt(routeTo.query.page) || 1;
+  await store.dispatch("eventModule/fetchEvents", {
+    page,
+  });
+  routeTo.params.page = page;
+  next();
+};
 
 export default {
   components: {
     EventCard,
   },
-  data() {
-    return {
-      perPage: 3,
-    };
+  props: {
+    page: {
+      type: Number,
+      required: true,
+    },
   },
   computed: {
-    page() {
-      return parseInt(this.$route.query.page) || 1;
-    },
     ...mapState({
       user: state => state.userModule.user,
       events: state => state.eventModule.events,
+      eventsTotal: state => state.eventModule.eventsTotal,
+      perPage: state => state.eventModule.perPage,
     }),
+    hasNextPage() {
+      return this.eventsTotal > this.page * this.perPage;
+    },
   },
-  created() {
-    const { perPage, page } = this;
-    this.$store.dispatch("eventModule/fetchEvents", {
-      perPage,
-      page,
-    });
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    getPageEvents(routeTo, next);
+  },
+  beforeRouteUpdate(routeTo, routeFrom, next) {
+    getPageEvents(routeTo, next);
   },
   methods: {
     paginationLinkByType(type) {

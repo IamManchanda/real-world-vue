@@ -97,6 +97,9 @@ small {
 .-text-primary {
   color: #39b982;
 }
+.-text-success {
+  color: #39b982;
+}
 .-text-base {
   color: #000;
 }
