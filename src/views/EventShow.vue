@@ -31,25 +31,12 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
   props: {
-    eventId: {
-      type: [Number, String],
-      default: 0,
+    event: {
+      type: Object,
+      required: true,
     },
-  },
-  computed: {
-    ...mapState({
-      event: state => state.eventModule.event,
-    }),
-  },
-  created() {
-    const { eventId } = this;
-    this.$store.dispatch("eventModule/fetchCurrentEvent", {
-      eventId,
-    });
   },
 };
 </script>

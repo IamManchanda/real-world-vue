@@ -80,10 +80,12 @@ export const actions = {
     const event = getters.getEventById(eventId);
     if (event) {
       commit("SET_CURRENT_EVENT", { event });
+      return event;
     } else {
       try {
         const { data: eventFromApi } = await getCurrentEvent(eventId);
         commit("SET_CURRENT_EVENT", { event: eventFromApi });
+        return eventFromApi;
       } catch (error) {
         dispatch(
           "notificationModule/addNotification",
