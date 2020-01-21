@@ -1,10 +1,11 @@
-# Real World Vue, with Mastering Vuex & Next Level Vue
+# Real World Vue, with Mastering Vuex, Next Level Vue and Vue 3 Essentials!
 
 Revised/Learned from
 
 - https://www.vuemastery.com/courses/real-world-vue-js/
 - https://www.vuemastery.com/courses/mastering-vuex/
-- https://www.vuemastery.com/courses/next-level-vue
+- https://www.vuemastery.com/courses/next-level-vue/
+- https://www.vuemastery.com/courses/vue-3-essentials
 
 ## Project setup
 
