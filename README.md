@@ -1,4 +1,4 @@
-# Real World Vue, with Mastering Vuex, Next Level Vue and Vue 3 Essentials!
+# Real World Vue, with Mastering Vuex, Next Level Vue and Vue 3 Essentials - Learned/Revised at Vue Mastery
 
 Revised/Learned from
 
