@@ -13,11 +13,13 @@
 
 <script>
 import useEventSpace from "@/use/event-space";
+import useHooks from "@/use/hooks";
 
 export default {
   setup() {
     return {
       ...useEventSpace(),
+      ...useHooks(),
     };
   },
 };
