@@ -1,4 +1,4 @@
-# real-world-vue
+# Real World Vue, with Mastering Vuex & Next Level Vue
 
 Revised/Learned from
 
