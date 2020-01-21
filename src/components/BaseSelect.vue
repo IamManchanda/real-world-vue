@@ -4,7 +4,7 @@
     <select
       :value="value"
       v-bind="$attrs"
-      v-on="$listeners"
+      v-on="listeners"
       @input="updateValue"
     >
       <option value disabled>{{ placeholder }}</option>
@@ -20,29 +20,18 @@
 </template>
 
 <script>
+import formFieldMixin from "@/mixins/formFieldMixin";
+
 export default {
-  inheritAttrs: false,
+  mixins: [formFieldMixin],
   props: {
     options: {
       type: Array,
       required: true,
     },
-    label: {
-      type: String,
-      default: "",
-    },
-    value: {
-      type: [String, Number],
-      default: "",
-    },
     placeholder: {
       type: String,
       default: "",
-    },
-  },
-  methods: {
-    updateValue(event) {
-      this.$emit("input", event.target.value);
     },
   },
 };
