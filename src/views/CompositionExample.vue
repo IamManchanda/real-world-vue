@@ -12,22 +12,13 @@
 </template>
 
 <script>
-import { reactive, computed, toRefs } from "@vue/composition-api";
+import useEventSpace from "@/use/event-space";
 
 export default {
   setup() {
-    const event = reactive({
-      capacity: 4,
-      attending: ["Tim", "Bob", "Joe"],
-      spacesLeft: computed(() => {
-        return event.capacity - event.attending.length;
-      }),
-    });
-    const increaseCapacity = () => {
-      event.capacity++;
+    return {
+      ...useEventSpace(),
     };
-
-    return { ...toRefs(event), increaseCapacity };
   },
 };
 </script>
