@@ -10,6 +10,7 @@
     "serve:api:slow": "json-server -d 2000 --watch db.json"
   },
   "dependencies": {
+    "@vue/composition-api": "^0.3.4",
     "axios": "^0.19.1",
     "core-js": "^3.6.4",
     "lodash": "^4.17.15",

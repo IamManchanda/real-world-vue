@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Example from "@/views/Example.vue";
+import CompositionExample from "@/views/CompositionExample.vue";
 import EventList from "@/views/EventList.vue";
 import EventShow from "@/views/EventShow.vue";
 import EventCreate from "@/views/EventCreate.vue";
@@ -25,6 +26,11 @@ const router = new Router({
       path: "/example",
       name: "example",
       component: Example,
+    },
+    {
+      path: "/composition-example",
+      name: "composition-example",
+      component: CompositionExample,
     },
     {
       path: "/event/create",
